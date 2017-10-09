@@ -1,0 +1,29 @@
+spring:
+  curator:
+    ensembleProviderRef:
+    connectString: 139.196.41.47:8181
+
+    aclProviderRef:
+    authInfosRef:
+    scheme: digest
+    authStr: zzqfsy:123456
+
+    canBeReadOnly: false
+
+    useContainerParentsIfAvailable: true
+
+    compressionProviderRef:
+
+    defaultDataBase64Str:
+
+    namespace: zzqfsy-auth
+
+    sessionTimeOutMs: 60000
+    connectionTimeoutMs: 5000
+    maxCloseWaitMs: 5000
+
+    threadFactoryRef:
+    zookeeperFactoryRef:
+
+    baseSleepTimeMs: 1000
+    maxRetries: 5
