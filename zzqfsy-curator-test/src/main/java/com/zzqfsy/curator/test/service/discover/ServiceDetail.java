@@ -1,4 +1,4 @@
-package com.zzqfsy.curator.test.discover;
+package com.zzqfsy.curator.test.service.discover;
 
 public class ServiceDetail {
     public static final String REGISTER_ROOT_PATH = "/service";

@@ -1,6 +1,6 @@
 package com.zzqfsy.curator.test;
 
-import com.zzqfsy.curator.test.discover.ServiceDetail;
+import com.zzqfsy.curator.test.service.discover.ServiceDetail;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
@@ -24,7 +24,7 @@ public class DiscoverTest {
 
     @Test
     public void serverTest1() throws Exception {
-        client.blockUntilConnected();
+
         ServiceInstanceBuilder<ServiceDetail> sib = ServiceInstance.builder();
         sib.address("192.168.1.100");
         sib.port(8855);

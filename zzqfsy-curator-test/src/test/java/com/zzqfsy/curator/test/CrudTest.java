@@ -18,7 +18,7 @@ public class CrudTest {
     @Autowired
     CuratorFramework client;
 
-    private static String ZK_PATH = "/crud";
+    private static String ZK_PATH = "/config";
     @Test
     public void crudTest() throws Exception {
         // Client API test
