@@ -28,29 +28,29 @@ public class CrudTest {
         List<ACL> acls = getACLBuilder.forPath("/");
 
         // 2.1 Create node
-        String data1 = "data1";
-        print("create", ZK_PATH, data1);
-        client.create()
-                .creatingParentContainersIfNeeded()
-                .withACL(acls, true)
-                .forPath(ZK_PATH, data1.getBytes());
+//        String data1 = "data1";
+//        print("create", ZK_PATH, data1);
+//        client.create()
+//                .creatingParentContainersIfNeeded()
+//                .withACL(acls, true)
+//                .forPath(ZK_PATH, data1.getBytes());
 
         // 2.2 Get node and data
         print("get", ZK_PATH);
         print(client.getData().forPath(ZK_PATH));
 
         // 2.3 Modify data
-        String data2 = "data2";
+        String data2 = "记得";
         print("set", ZK_PATH, data2);
         client.setData().forPath(ZK_PATH, data2.getBytes());
         print("get", ZK_PATH);
         print(client.getData().forPath(ZK_PATH));
 
         // 2.4 Remove node
-        print("delete", ZK_PATH);
-        client.delete().forPath(ZK_PATH);
-        print("ls", "/");
-        print(client.getChildren().forPath("/"));
+//        print("delete", ZK_PATH);
+//        client.delete().forPath(ZK_PATH);
+//        print("ls", "/");
+//        print(client.getChildren().forPath("/"));
         int a = 123;
     }
 

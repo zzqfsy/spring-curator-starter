@@ -9,6 +9,7 @@ import org.apache.curator.framework.state.ConnectionStateListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class NodeListener {
     private Logger logger = LoggerFactory.getLogger(NodeListener.class);
     private static String ZK_PATH = "/config";
@@ -35,7 +36,7 @@ public class NodeListener {
 
                             //进行数据变更的相关操作
                             if (data != null) {
-                                logger.info("changed data: " + data.toString());
+                                logger.info("changed data: " + new String(data));
                             }
                         }
                     });
