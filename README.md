@@ -10,7 +10,7 @@ spring starter
 
 ## <a name="zzqfsy-curator-test"></a>zzqfsy-curator-test
 简单的测试功能，包含以下功能：
-1. 增加改查；
+1. 增删改查；
 2. 配置监听；
 3. 服务注册；
 4. 服务发现；
