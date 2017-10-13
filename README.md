@@ -5,6 +5,7 @@ guava is to java what curator is to zookeeper~
 
 ## <a name="zzqfsy-curator-starter"></a>zzqfsy-curator-starter
 配置化注入CuratorFramework模块
+
 spring starter
 
 ## <a name="zzqfsy-curator-test"></a>zzqfsy-curator-test
