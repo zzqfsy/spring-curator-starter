@@ -15,6 +15,7 @@ public class Server1 {
     private Logger logger = LoggerFactory.getLogger(Server1.class);
 
     private ServiceDiscovery<ServiceDetail> serviceDiscovery;
+    private ServiceInstance<ServiceDetail> instance;
     private CuratorFramework client;
 
     public Server1(CuratorFramework client) {
@@ -25,15 +26,12 @@ public class Server1 {
             sib.name("tomcat");
             sib.payload(new ServiceDetail("主站web程序", 1));
 
-            ServiceInstance<ServiceDetail> instance = sib.build();
-
+            instance = sib.build();
             serviceDiscovery = ServiceDiscoveryBuilder.builder(ServiceDetail.class)
                     .client(client)
                     .serializer(new JsonInstanceSerializer<ServiceDetail>(ServiceDetail.class))
                     .basePath(ServiceDetail.REGISTER_ROOT_PATH)
                     .build();
-            //服务注册
-            serviceDiscovery.registerService(instance);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +39,9 @@ public class Server1 {
 
     public void start(){
         try {
+            //服务注册
             serviceDiscovery.start();
+            serviceDiscovery.registerService(instance);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,8 +50,14 @@ public class Server1 {
 
     public void close() {
         try {
-            serviceDiscovery.close();
+            //服务取消注册
+            if (serviceDiscovery != null) {
+                serviceDiscovery.unregisterService(instance);
+                serviceDiscovery.close();
+            }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -21,7 +21,22 @@ public class NodeListener {
     }
 
     public void start(){
-        final NodeCache cache = new NodeCache(client, ZK_PATH);
+        watchNodeChangeDataEvent();
+
+        client.getUnhandledErrorListenable().addListener(new UnhandledErrorListener() {
+            @Override
+            public void unhandledError(String message, Throwable e) {
+                logger.info("CuratorFramework unhandledError: {}", message);
+            }
+        });
+    }
+
+    public void close(){
+        //remove listener
+    }
+
+    public void watchNodeChangeDataEvent(){
+        //final NodeCache cache = new NodeCache(client, ZK_PATH);
         client.getConnectionStateListenable().addListener(new ConnectionStateListener() {
             @Override
             public void stateChanged(CuratorFramework client, ConnectionState newState) {
@@ -31,10 +46,8 @@ public class NodeListener {
                     cache.getListenable().addListener(new NodeCacheListener() {
                         @Override
                         public void nodeChanged() throws Exception {
-
-                            byte[] data = cache.getCurrentData().getData();
-
                             //进行数据变更的相关操作
+                            byte[] data = cache.getCurrentData().getData();
                             if (data != null) {
                                 logger.info("changed data: " + new String(data));
                             }
@@ -48,16 +61,5 @@ public class NodeListener {
                 }
             }
         });
-
-        client.getUnhandledErrorListenable().addListener(new UnhandledErrorListener() {
-            @Override
-            public void unhandledError(String message, Throwable e) {
-                logger.info("CuratorFramework unhandledError: {}", message);
-            }
-        });
-    }
-
-    public void close(){
-
     }
 }
