@@ -27,6 +27,18 @@ public class DiscoverController {
         return client1.getServers();
     }
 
+    @RequestMapping(path = "/instance")
+    @ResponseBody
+    public Object instance(){
+        return client1.getInstance();
+    }
+
+    @RequestMapping(path = "/allInstance")
+    @ResponseBody
+    public Object getAllInstance(){
+        return client1.getAllInstance();
+    }
+
     @RequestMapping(path = "/servers/start")
     public String startServer(@RequestParam("serverName") String serverName){
         if (StringUtils.isEmpty(serverName)) return "fail";
