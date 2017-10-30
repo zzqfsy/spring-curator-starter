@@ -1,7 +1,7 @@
 spring:
   curator:
     ensembleProviderRef:
-    connectString: 139.196.41.47:8181
+    connectString: 127.0.0.1:8181
 
     aclProviderRef:
     authInfosRef:
