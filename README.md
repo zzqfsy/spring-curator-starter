@@ -3,6 +3,11 @@ guava is to java what curator is to zookeeper~
 * [zzqfsy-curator-starter](#zzqfsy-curator-starter)
 * [zzqfsy-curator-test](#zzqfsy-curator-test)
 
+## Build
+```shell
+mvn clean install -Dmaven.test.skip=true -X
+```
+
 ## <a name="zzqfsy-curator-starter"></a>zzqfsy-curator-starter
 配置化注入CuratorFramework模块
 
